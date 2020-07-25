@@ -1,9 +1,9 @@
 module.exports = {
   database: {
     connectionLimit: 10,
-    host: 'localhost',
-    user: 'alvarocastle',
-    password: 'BLUEcat2518',
-    database: 'personalwebsite',
+    host: process.env.DB_HOST,
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
   },
 }
