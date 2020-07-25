@@ -1,8 +1,8 @@
 module.exports = {
-  HOST: process.env.DB_HOST,
-  USER: process.env.DB_USERNAME,
-  PASSWORD: process.env.DB_PASSWORD,
-  DB: process.env.DB_DATABASE,
+  HOST: 'us-cdbr-east-02.cleardb.com',
+  USER: 'b89c22dbd1a04f',
+  PASSWORD: 'cfd8671d',
+  DB: 'heroku_38e43dd30660a24',
   dialect: 'mysql',
   pool: {
     max: 5,
