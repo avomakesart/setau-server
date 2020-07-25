@@ -22,5 +22,6 @@
     "nodemon": "^2.0.4",
     "pg": "^8.3.0",
     "sequelize": "^6.3.3"
-  }
+  },
+  "heroku-run-build-script": true
 }
