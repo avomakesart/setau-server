@@ -6,8 +6,8 @@ const app = express()
 
 var corsOptions = {
   origin:
-    'http://alvarocastle.com' ||
-    'https://alvarocastle.com' ||
+    'http://alvarocastle.com' &&
+    'https://alvarocastle.com' &&
     'http://localhost:5001',
 }
 
