@@ -4,15 +4,12 @@ const cors = require('cors')
 
 const app = express()
 
-// var corsOptions = {
-//   origin:
-//     'http://alvarocastle.com' &&
-//     'https://alvarocastle.com' &&
-//     'http://localhost:5001',
+// const corsOptions = {
+//   origin: 'http://alvarocastle.com',
 // }
 
 // Middleware
-app.use(cors(corsOptions))
+app.use(cors())
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
