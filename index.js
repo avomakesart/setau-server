@@ -4,12 +4,12 @@ const cors = require('cors')
 
 const app = express()
 
-var corsOptions = {
-  origin:
-    'http://alvarocastle.com' &&
-    'https://alvarocastle.com' &&
-    'http://localhost:5001',
-}
+// var corsOptions = {
+//   origin:
+//     'http://alvarocastle.com' &&
+//     'https://alvarocastle.com' &&
+//     'http://localhost:5001',
+// }
 
 // Middleware
 app.use(cors(corsOptions))
