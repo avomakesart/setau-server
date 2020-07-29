@@ -4,12 +4,12 @@ const cors = require('cors')
 
 const app = express()
 
-// const corsOptions = {
-//   origin: 'http://alvarocastle.com',
-// }
+const corsOptions = {
+  origin: 'http://localhost:5001',
+}
 
 // Middleware
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
@@ -41,8 +41,26 @@ function initial() {
   })
 }
 
+// Projects routes
 require('./routes/projects.routes')(app)
 require('./routes/personal_projects.routes')(app)
+
+// Experience routes
+require('./routes/experience.routes')(app)
+
+// Contact routes
+require('./routes/contact.routes')(app)
+
+// Tools routes
+require('./routes/tools.routes')(app)
+
+// Technologies routes
+require('./routes/technologies.routes')(app)
+
+// Certificates routes
+require('./routes/certificates.routes')(app)
+
+// Auth routes
 require('./routes/auth.routes')(app)
 require('./routes/user.routes')(app)
 
