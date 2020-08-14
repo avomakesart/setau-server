@@ -1,9 +1,10 @@
 module.exports = {
-  HOST: 'us-cdbr-east-02.cleardb.com',
-  USER: 'b89c22dbd1a04f',
-  PASSWORD: 'cfd8671d',
-  DB: 'heroku_38e43dd30660a24',
-  dialect: 'mysql',
+  HOST: 'localhost',
+  USER: 'alvarocastillocorrea',
+  PASSWORD: 'Cosmosblue2508',
+  DB: 'setau',
+  PORT: 5432,
+  dialect: 'postgresql',
   pool: {
     max: 5,
     min: 0,

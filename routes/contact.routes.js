@@ -1,4 +1,4 @@
-const controller = require('../controllers/contact.controller')
+const controller = require('../controllers/contact/contact.controller')
 
 module.exports = function (app) {
   app.use(function (req, res, next) {
@@ -8,18 +8,10 @@ module.exports = function (app) {
     )
     next()
   })
-  // create project
-  app.post('/api/contact', controller.createContactInfo)
 
-  // get all projects
-  app.get('/api/contact', controller.getContactInfo)
-
-  // get a todo
-  app.get('/api/contact/:id', controller.getContactInfoById)
-
-  // update a project
-  app.put('/api/contact/:id', controller.updateContactInfo)
-
-  // delete a project
-  app.delete('/api/contact/:id', controller.deleteContactInfo)
+  // Contact routes
+  app.post('/api/contact_message', controller.createContactMessage)
+  app.get('/api/contact_message', controller.getContactMessage)
+  app.get('/api/contact_message/:id', controller.getContactMessageById)
+  app.delete('/api/contact_message/:id', controller.deleteContactMessage)
 }

@@ -5,7 +5,7 @@ const cors = require('cors')
 const app = express()
 
 // const corsOptions = {
-//   origin: 'http://localhost:5001',
+//   origin: 'http://localhost:8200',
 // }
 
 // Middleware
@@ -19,10 +19,10 @@ app.use(bodyParser.json())
 const db = require('./models')
 const Role = db.role
 
-db.sequelize.sync({ force: true }).then(() => {
-  console.log('Drop and Resync Db')
-  initial()
-})
+// db.sequelize.sync({ force: true }).then(() => {
+//   console.log('Drop and Resync Db')
+//   initial()
+// })
 
 function initial() {
   Role.create({
@@ -41,24 +41,29 @@ function initial() {
   })
 }
 
-// Projects routes
-require('./routes/projects.routes')(app)
-require('./routes/personal_projects.routes')(app)
+// Homepage routes
+require('./routes/homepage.routes')(app)
 
-// Experience routes
-require('./routes/experience.routes')(app)
+// About routes
+require('./routes/about.routes')(app)
+
+// Company values routes
+require('./routes/values.routes')(app)
+
+// Team members routes
+require('./routes/team.routes')(app)
+
+// Clients routes
+require('./routes/client.routes')(app)
+
+// Blog routes
+require('./routes/post.routes')(app)
+
+// User routes
+require('./routes/user-info.routes')(app)
 
 // Contact routes
 require('./routes/contact.routes')(app)
-
-// Tools routes
-require('./routes/tools.routes')(app)
-
-// Technologies routes
-require('./routes/technologies.routes')(app)
-
-// Certificates routes
-require('./routes/certificates.routes')(app)
 
 // Auth routes
 require('./routes/auth.routes')(app)

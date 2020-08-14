@@ -2,8 +2,8 @@ module.exports = {
   database: {
     connectionLimit: 10,
     host: 'localhost',
-    user: 'alvarocastillocorrea',
-    password: 'Cosmosblue2508',
+    user: 'alvarocastle',
+    password: 'BLUEcat2518',
     database: 'setau',
   },
 }

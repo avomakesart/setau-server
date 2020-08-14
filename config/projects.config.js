@@ -1,30 +1,11 @@
-const mysql = require('mysql')
-const { promisify } = require('util')
+const Pool = require('pg').Pool
 
-const { database } = require('./projectKeys.config')
-
-const pool = mysql.createPool(database)
-
-pool.getConnection((err, connection) => {
-  if (err) {
-    if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-      console.error('Database connection was closed.')
-    }
-    if (err.code === 'ER_CON_COUNT_ERROR') {
-      console.error('Database has to many connections')
-    }
-    if (err.code === 'ECONNREFUSED') {
-      console.error('Database connection was refused')
-    }
-  }
-
-  if (connection) connection.release()
-  console.log('DB is Connected')
-
-  return
+const pool = new Pool({
+  user: 'alvarocastillocorrea',
+  password: 'Cosmosblue2508',
+  host: 'localhost',
+  port: 5432,
+  database: 'setau',
 })
-
-// Promisify Pool Querys
-pool.query = promisify(pool.query)
 
 module.exports = pool
