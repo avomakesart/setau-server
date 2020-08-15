@@ -10,7 +10,7 @@ exports.createTestimonialSection = async (req, res) => {
     ]
 
     const newEntry = await pool.query(
-      'INSERT INTO testimonial_section (testimonial_title, testimonial_subtitle) VALUES(?) RETURNING *',
+      'INSERT INTO testimonial_section (testimonial_title, testimonial_subtitle) VALUES(?)',
       [section]
     )
 

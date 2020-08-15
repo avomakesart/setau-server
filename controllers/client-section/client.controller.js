@@ -33,7 +33,7 @@ exports.getClientById = async (req, res) => {
   try {
     const { id } = req.params
     const values = await pool.query(
-      'SELECT * FROM client_image WHERE id = ?',
+      'SELECT * FROM client_list WHERE id = ?',
       [id]
     )
 

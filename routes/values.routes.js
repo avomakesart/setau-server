@@ -21,6 +21,7 @@ module.exports = function (app) {
   // Icons
   app.post('/api/icon_values', iconsController.createIcon)
   app.get('/api/icon_values', iconsController.getIcons)
+  app.get('/api/icon_values/:id', iconsController.getIconsById)
   app.put('/api/icon_values/:id', iconsController.updateIcons)
   app.delete('/api/icon_values/:id', iconsController.deleteIcons)
 }

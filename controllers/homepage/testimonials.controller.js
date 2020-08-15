@@ -3,12 +3,16 @@ const pool = require('../../config/mysql.config')
 // Post testimonial
 exports.createTestimonial = async (req, res) => {
   try {
-    const { testimonial_desc, testimonial_img, testimonial_name } = req.body
+    const { testimonials_desc, testimonials_img, testimonials_name } = req.body
 
-    const testimonials = [testimonial_desc, testimonial_img, testimonial_name]
+    const testimonials = [
+      testimonials_desc,
+      testimonials_img,
+      testimonials_name,
+    ]
 
     const newEntry = await pool.query(
-      'INSERT INTO testimonials (testimonial_desc, testimonial_img, testimonial_name) VALUES(?) RETURNING *',
+      'INSERT INTO testimonials (testimonials_desc, testimonials_img, testimonials_name) VALUES(?)',
       [testimonials]
     )
 
@@ -47,33 +51,33 @@ exports.getTestimonialById = async (req, res) => {
 exports.updateTestimonial = async (req, res) => {
   try {
     const { id } = req.params
-    const { testimonial_desc, testimonial_img, testimonial_name } = req.body
+    const { testimonials_desc, testimonials_img, testimonials_name } = req.body
 
     let testimonialDesc =
-      'UPDATE testimonials SET testimonial_desc = ? WHERE id = ?'
+      'UPDATE testimonials SET testimonials_desc = ? WHERE id = ?'
 
     let testimonialImg =
-      'UPDATE testimonials SET testimonial_img = ? WHERE id = ?'
+      'UPDATE testimonials SET testimonials_img = ? WHERE id = ?'
 
     let testimonialName =
-      'UPDATE testimonials SET testimonial_name = ? WHERE id = ?'
+      'UPDATE testimonials SET testimonials_name = ? WHERE id = ?'
 
     await pool.query(
       testimonialDesc,
 
-      [testimonial_desc, id]
+      [testimonials_desc, id]
     )
 
     await pool.query(
       testimonialImg,
 
-      [testimonial_img, id]
+      [testimonials_img, id]
     )
 
     await pool.query(
       testimonialName,
 
-      [testimonial_name, id]
+      [testimonials_name, id]
     )
 
     res.json('Testimonial has been updated')

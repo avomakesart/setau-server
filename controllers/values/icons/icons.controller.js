@@ -30,6 +30,23 @@ exports.getIcons = async (req, res) => {
   }
 }
 
+
+// Get Icons by id
+exports.getIconsById = async (req, res) => {
+  try {
+    const { id } = req.params
+    const icons = await pool.query(
+      'SELECT * FROM icon_values WHERE id = ?',
+      [id]
+    )
+
+    res.json(icons)
+  } catch (err) {
+    console.log(err.message)
+  }
+}
+
+
 // Update first icon
 exports.updateIcons = async (req, res) => {
   try {
