@@ -3,7 +3,7 @@ module.exports = {
     connectionLimit: 10,
     host: 'localhost',
     user: 'alvarocastle',
-    password: 'BLUEcat2518',
+    password: 'BLUEcat#2518',
     database: 'setau',
   },
 }

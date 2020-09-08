@@ -67,7 +67,7 @@ exports.updateClient = async (req, res) => {
 exports.deleteClient = async (req, res) => {
   try {
     const { id } = req.params
-    await pool.query('DELETE FROM client_section WHERE id = ?', [id])
+    await pool.query('DELETE FROM client_list WHERE id = ?', [id])
     res.json('Client has been deleted')
   } catch (err) {
     console.log(err.message)

@@ -1,8 +1,14 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-
+const fileUpload = require("express-fileupload")
+const morgan = require('morgan')
 const app = express()
+
+app.use(fileUpload({
+  createParentPath: true
+}))
+
 
 // const corsOptions = {
 //   origin: 'http://localhost:8200',
@@ -13,6 +19,7 @@ app.use(cors())
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
+app.use(morgan('dev'))
 
 // Routes
 
@@ -40,6 +47,28 @@ function initial() {
     name: 'admin',
   })
 }
+
+app.post('/api/upload', async (req, res) => {
+  try {
+    if (!req.files) {
+      res.send({
+        status: false,
+        message: 'No files',
+      })
+    } else {
+      const { picture } = req.files
+
+      picture.mv(`../client/public/uploads/` + picture.name)
+
+      res.send({
+        status: true,
+        message: 'File is uploaded',
+      })
+    }
+  } catch (e) {
+    res.status(500).send(e)
+  }
+})
 
 // Homepage routes
 require('./routes/homepage.routes')(app)

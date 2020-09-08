@@ -4,11 +4,13 @@ const moment = require('moment')
 // Post blog post
 exports.createPost = async (req, res) => {
   try {
+    const { id } = req.params
+    // const { authorid } = req.params
+    // const { parentid } = req.params
     const {
-      id,
-      authorid,
-      authorname,
-      parentid,
+      authorid = 1,
+      author_name = 'Alvaro Castillo',
+      parentid = id,
       title,
       metatitle,
       slug,
@@ -23,8 +25,8 @@ exports.createPost = async (req, res) => {
     } = req.body
 
     const values = [
-      id,
       authorid,
+      author_name,
       parentid,
       title,
       metatitle,
@@ -39,23 +41,28 @@ exports.createPost = async (req, res) => {
       featured_image,
     ]
 
-    const { author_name } = req.params.fullname
+    const authorID = authorid
+    const authorName = author_name
+    const publishedContent = published
+    const createdDate = createdat
+    const updated = updatedat
+    const publishedAt = publishedat
+    const parentId = parentid
 
     const newEntry = await pool.query(
-      'INSERT INTO post (id, authorid, author_name, parentid, title, metatitle, slug, summary, published, createdat, updatedat, publishedat, content, read_time, featured_image) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING *',
+      'INSERT INTO post (parentid, authorid, author_name, title, metatitle, slug, summary, published, createdat, updatedat, publishedat, content, read_time, featured_image) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING *',
       [
-        req.body.id,
-        req.body.authorid,
-        author_name,
-        req.body.parentid,
+        parentId,
+        authorID,
+        authorName,
         req.body.title,
         req.body.metatitle,
         req.body.slug,
         req.body.summary,
-        req.body.published,
-        req.body.createdat,
-        req.body.updatedat,
-        req.body.publishedat,
+        publishedContent,
+        createdDate,
+        updated,
+        publishedAt,
         req.body.content,
         req.body.read_time,
         req.body.featured_image,
